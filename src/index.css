@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Custom OKLCH palette as requested in design brainstorm */
+  --color-brand: oklch(0.75 0.15 80); /* Warm amber/gold accent */
+  --color-brand-muted: oklch(0.55 0.10 80);
+  --color-brand-glow: rgba(230, 160, 40, 0.15);
+  
+  --color-bg-darker: oklch(0.11 0.005 80); /* extremely dark near-black */
+  --color-bg-dark: oklch(0.13 0.005 80); /* near-black canvas */
+  --color-bg-panel: oklch(0.16 0.005 80); /* slightly elevated grey-black */
+  --color-bg-glass: rgba(18, 18, 18, 0.7);
+  
+  --color-text-primary: oklch(0.95 0.005 80); /* near white */
+  --color-text-secondary: oklch(0.55 0.005 80); /* cool grey */
+  --color-border-dark: oklch(0.20 0.005 80); /* deep grey borders */
+}
+
+/* Base styles and custom scrollbar */
+html, body {
+  background-color: var(--color-bg-darker);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Custom interactive & decorative styles */
+.spotlight-vignette {
+  background: radial-gradient(circle at 50% 50%, rgba(230, 160, 40, 0.06) 0%, rgba(0, 0, 0, 0) 80%);
+}
+
+.studio-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(230, 160, 40, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 160, 40, 0.01) 1px, transparent 1px);
+}
+
+/* Glowing text and panels */
+.glow-text {
+  text-shadow: 0 0 10px rgba(230, 160, 40, 0.2);
+}
+
+.glow-border:hover {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 15px rgba(230, 160, 40, 0.1);
+}
+
+/* Shimmer/flash animation for sneaker parts updates */
+@keyframes flash-emissive {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 0px rgba(230, 160, 40, 0));
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 8px rgba(230, 160, 40, 0.4));
+  }
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0px rgba(230, 160, 40, 0));
+  }
+}
+
+.material-updated {
+  animation: flash-emissive 0.3s ease-out;
+}
