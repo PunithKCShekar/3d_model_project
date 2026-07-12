@@ -1,6 +1,5 @@
 import React from 'react';
-import WordmarkLogo from './WordmarkLogo';
-import { RotateCcw, Save, Cpu, Check, ChevronRight, BarChart2 } from 'lucide-react';
+import { RotateCcw, Save, Cpu, Check, ChevronRight } from 'lucide-react';
 
 const PARTS_INFO = {
   sole: { label: 'Midsole & Outsole', id: 'sole_outsole_v4', icon: '👟' },
@@ -47,13 +46,15 @@ export default function ControlPanel({
 
   return (
     <div className="flex flex-col h-full bg-bg-panel border-l border-border-dark select-none overflow-y-auto">
-      {/* Brand Header */}
+      {/* Configuration Control Panel Header */}
       <div className="p-6 border-b border-border-dark flex justify-between items-center shrink-0">
-        <WordmarkLogo />
+        <span className="font-mono text-[10px] uppercase tracking-widest text-text-secondary">
+          Component Inspector
+        </span>
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-secondary">
-            SYS_ONLINE_4.1.0
+          <span className="font-mono text-[9px] uppercase tracking-widest text-brand font-bold">
+            SYS_ONLINE
           </span>
         </div>
       </div>
